@@ -47,8 +47,8 @@ def cityreader(cities=[]):
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
-# for c in cities:
-#     print(c)
+for c in cities:
+    print(c)
 
 # STRETCH GOAL!
 #
@@ -82,36 +82,44 @@ cityreader(cities)
 # TODO Get latitude and longitude values from the user
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+  
   # within will hold the cities that fall within the specified region
   within = []
-  
-  for city in cities:
-    if lat1 > float(city.lat) > lat2:
-      if lon1 > float(city.lon) > lon2:
-          within.append(city)
-    elif lat1 < float(city.lat) < lat2:
-      if lon1 < float(city.lon) < lon2:
-          within.append(city)
-    else:
-      pass
-
-  for city in within:
-    print(f'{city.name}: ({city.lat}, {city.lon})')
   # TODO Ensure that the lat and lon valuse are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
-
-
+  
+  #loop through cities list
+  for city in cities:
+    #checks if city is within upper latitude range
+    if lat1 > float(city.lat) > lat2:
+      #checks if city is within upper longitude range
+      if lon1 > float(city.lon) > lon2:
+          #adds city to list
+          within.append(city)
+    #checks if city is within lower latitude range
+    elif lat1 < float(city.lat) < lat2:
+      #checks if city is within lower longitude range
+      if lon1 < float(city.lon) < lon2:
+          #adds city to list
+          within.append(city)
+    else:
+      pass
+  
+  #loop through within list and print results
+  for city in within:
+    print(f'{city.name}: ({city.lat}, {city.lon})')
 
   return within
-
 
 while True:
   #grabs first pair of coordinates
   firstPair = input('Enter lat1,lon1: ').split(',')
   #grabs second pair of coordinates
   secondPair = input('Enter lat1,lon1: ').split(',')
+  #create white space
   print(f'\n')
+  #invoke function
   cityreader_stretch(float(firstPair[0]), float(firstPair[1]), float(secondPair[0]), float(secondPair[1]), cities)
   break
 
