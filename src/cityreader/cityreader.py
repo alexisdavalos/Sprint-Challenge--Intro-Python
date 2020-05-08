@@ -38,7 +38,7 @@ def cityreader(cities=[]):
       if header != None:
         #loop through rest of content
         for row in content_reader:
-          cities.append(City(row[0], row[3], row[4]))
+          cities.append(City(row[0], float(row[3]), float(row[4])))
       else:
         print('Error: File is empty')
 
